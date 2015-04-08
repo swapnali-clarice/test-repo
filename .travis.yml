@@ -1,0 +1,42 @@
+language: android
+jdk: oraclejdk7
+
+
+android:
+  components:
+    # use the latest revision of Android SDK Tools
+    - platform-tools
+    - tools
+
+    # The BuildTools version used
+    - build-tools-21.1.1
+
+    # The SDK version used to compile the project
+    # Android 21 (5.0) Emulator fails to launch many times, so go for Android 16
+    - android-16
+
+    # Specify at least one system image,
+    # if you need to run emulator(s) during your tests
+    - sys-img-armeabi-v7a-android-16
+
+
+# Disable travis email notifications until builds work properly
+notifications:
+  email: false
+
+before_script:
+  # Create and start emulator if you want to run tests
+  - echo no | android create avd --force -n test -t $ANDROID_TARGET -c 1024M --abi $ANDROID_ABI
+  - emulator -avd test -no-skin -no-audio -no-window &
+  - adb wait-for-device
+  - adb shell input keyevent 82 &
+  - chmod +x gradlew
+
+
+script:
+  # - ./gradlew uninstallAll createProdDebugCoverageReport copyUnitTestBuildArtifacts
+  ./gradlew build connectedCheck
+
+  branches:
+    only:
+      - master
