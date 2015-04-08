@@ -9,7 +9,7 @@ import android.util.Log;
 public class UtilTests extends InstrumentationTestCase {
     
     public void testBrowserOpenUrl() throws Exception {
-        String url = "https://courses.edx.org/register";
+        String url = "https://www.google.com";
         Intent intent = new Intent(Intent.ACTION_VIEW);
         intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         intent.setData(Uri.parse(url));

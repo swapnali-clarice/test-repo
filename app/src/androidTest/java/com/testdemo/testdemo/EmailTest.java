@@ -12,7 +12,7 @@ public class EmailTest extends InstrumentationTestCase {
 
 
     public void testEmail() throws Exception {
-        String to = "user@edx.org";
+        String to = "user@edx.com";
         String subject = "edX Test Email";
         String email = "hi, this is test email";
         EmailUtil.sendEmail(getInstrumentation()
