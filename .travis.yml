@@ -26,20 +26,18 @@ notifications:
 
 before_script:
   # Create and start emulator if you want to run tests
-  - echo no | android create avd --force -n test -t $ANDROID_TARGET -c 1024M --abi $ANDROID_ABI
-  - emulator -avd test -no-skin -no-audio -no-window &
-  - adb wait-for-device
-  - adb shell input keyevent 82 &
+ # - echo no | android create avd --force -n test -t $ANDROID_TARGET -c 1024M --abi $ANDROID_ABI
+ # - emulator -avd test -no-skin -no-audio -no-window &
+ # - adb wait-for-device
+ # - adb shell input keyevent 82 &
   - chmod +x gradlew
 
 
 script:
-  - ./gradlew uninstallAll createProdDebugCoverageReport copyUnitTestBuildArtifacts
-  ./gradlew build connectedCheck
+#  - ./gradlew uninstallAll createProdDebugCoverageReport copyUnitTestBuildArtifacts
+  - ./gradlew build
 
-install: gradle clean build
 
-script: gradle check
   branches:
     only:
       - master
