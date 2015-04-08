@@ -34,7 +34,7 @@ before_script:
 
 
 script:
-  # - ./gradlew uninstallAll createProdDebugCoverageReport copyUnitTestBuildArtifacts
+  - ./gradlew uninstallAll createProdDebugCoverageReport copyUnitTestBuildArtifacts
   ./gradlew build connectedCheck
 
   branches:
