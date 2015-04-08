@@ -33,9 +33,9 @@ before_script:
   - chmod +x gradlew
 
 
-script:
-  - ./gradlew uninstallAll createProdDebugCoverageReport copyUnitTestBuildArtifacts
-  ./gradlew build connectedCheck
+install: gradle clean build
+
+script: gradle check
 
   branches:
     only:
