@@ -34,10 +34,10 @@ before_script:
 
 
 script:
-  #- ./gradlew uninstallAll createProdDebugCoverageReport copyUnitTestBuildArtifacts
-  - ./gradlew build connectedCheck
 
-#install: gradle clean build
+  - ./gradlew build 
+
+
 
   branches:
     only:
